@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\Contracts\UserRepository;
 use App\Repositories\EloquentUserRepository;
+use App\Repositories\Contracts\NoteRepository;
+use App\Repositories\EloquentNoteRepository;
 
 class RepositoriesServiceProvider extends ServiceProvider
 {
@@ -33,6 +35,7 @@ class RepositoriesServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(UserRepository::class, EloquentUserRepository::class);
+        $this->app->bind(NoteRepository::class, EloquentNoteRepository::class);
     }
 
     /**
@@ -43,7 +46,8 @@ class RepositoriesServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
-            UserRepository::class
+            UserRepository::class,
+            NoteRepository::class,
         ];
     }
 }

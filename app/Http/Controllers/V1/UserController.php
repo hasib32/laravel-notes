@@ -52,7 +52,7 @@ class UserController extends Controller
         $user = $this->userRepository->save($request->all());
 
         if (!$user instanceof User) {
-            return $this->sendCustomResponse(500, 'Error occurred on creating User');
+            return $this->sendCustomResponse(404, 'Error occurred on creating User');
         }
 
         return $user;

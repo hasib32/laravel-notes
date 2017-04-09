@@ -17,4 +17,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::resource('users', 'UserController', ['except' => [
         'create', 'edit'
     ]]);
+
+    Route::resource('notes', 'NoteController', ['except' => [
+        'create', 'edit'
+    ]]);
 });
