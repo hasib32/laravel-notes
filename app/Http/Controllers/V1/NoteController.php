@@ -70,6 +70,9 @@ class NoteController extends Controller
             return $this->sendNotFoundResponse("The note with id {$id} doesn't exist");
         }
 
+        // Authorization
+        $this->authorize('show', $note);
+
         return $note;
     }
 
@@ -87,6 +90,9 @@ class NoteController extends Controller
         if (!$note instanceof Note) {
             return $this->sendNotFoundResponse("The note with id {$id} doesn't exist");
         }
+
+        // Authorization
+        $this->authorize('update', $note);
 
         $note = $this->noteRepository->update($note, $request->all());
 
@@ -106,6 +112,9 @@ class NoteController extends Controller
         if (!$note instanceof Note) {
             return $this->sendNotFoundResponse("The note with id {$id} doesn't exist");
         }
+        
+        // Authorization
+        $this->authorize('delete', $note);
 
         $this->noteRepository->delete($note);
 
