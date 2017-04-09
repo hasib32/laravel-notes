@@ -72,6 +72,9 @@ class UserController extends Controller
             return $this->sendNotFoundResponse("The user with id {$id} doesn't exist");
         }
 
+        // Authorization
+        $this->authorize('show', $user);
+
         return $user;
     }
 
@@ -89,6 +92,9 @@ class UserController extends Controller
         if (!$user instanceof User) {
             return $this->sendNotFoundResponse("The user with id {$id} doesn't exist");
         }
+
+        // Authorization
+        $this->authorize('update', $user);
 
         $user = $this->userRepository->update($user, $request->all());
 
@@ -108,6 +114,9 @@ class UserController extends Controller
         if (!$user instanceof User) {
             return $this->sendNotFoundResponse("The user with id {$id} doesn't exist");
         }
+
+        // Authorization
+        $this->authorize('delete', $user);
 
         $this->userRepository->delete($user);
 

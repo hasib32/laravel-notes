@@ -62,4 +62,14 @@ class User extends Authenticatable
     protected $attributes = [
         'isActive'  => 0,
     ];
+
+    /**
+     * Check if User has admin role
+     *
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return $this->role === self::ADMIN_ROLE;
+    }
 }
