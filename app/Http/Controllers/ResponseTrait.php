@@ -114,4 +114,9 @@ trait ResponseTrait
     {
         return response()->json(['data' => new \StdClass()]);
     }
+
+    public function sendSuccessResponse($data, $code)
+    {
+        return response()->json(['data' => $data], $code);
+    }
 }

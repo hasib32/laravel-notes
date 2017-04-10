@@ -55,7 +55,7 @@ class UserController extends Controller
             return $this->sendCustomResponse(404, 'Error occurred on creating User');
         }
 
-        return $user;
+        return $this->sendSuccessResponse($user, 201);
     }
 
     /**
@@ -75,7 +75,7 @@ class UserController extends Controller
         // Authorization
         $this->authorize('show', $user);
 
-        return $user;
+        return $this->sendSuccessResponse($user, 200);
     }
 
     /**
@@ -98,7 +98,7 @@ class UserController extends Controller
 
         $user = $this->userRepository->update($user, $request->all());
 
-        return $user;
+        return $this->sendSuccessResponse($user, 200);
     }
 
     /**

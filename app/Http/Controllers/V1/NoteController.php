@@ -53,7 +53,7 @@ class NoteController extends Controller
             return $this->sendCustomResponse(404, 'Error occurred on creating Note');
         }
 
-        return $note;
+        return $this->sendSuccessResponse($note, 200);
     }
 
     /**
@@ -73,7 +73,7 @@ class NoteController extends Controller
         // Authorization
         $this->authorize('show', $note);
 
-        return $note;
+        return $this->sendSuccessResponse($note, 200);
     }
 
     /**
@@ -96,7 +96,7 @@ class NoteController extends Controller
 
         $note = $this->noteRepository->update($note, $request->all());
 
-        return $note;
+        return $this->sendSuccessResponse($note, 200);
     }
 
     /**

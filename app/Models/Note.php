@@ -22,4 +22,13 @@ class Note extends Model
      * @var array
      */
     protected $fillable = ['userId', 'uid', 'message', 'tags'];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'deleted_at',
+    ];
 }
