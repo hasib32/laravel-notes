@@ -54,12 +54,12 @@ In order to use the API first we need to create a access_token. For testing purp
 | HTTP Method	| Path | Action | Desciption  |
 | ----- | ----- | ----- | ------------- |
 | GET      | api/users | index | Get all users
-| POST     | api/user | store | Create an user. Required fields: email, firstName, lastName
+| POST     | api/user | store | Create an user. Required fields: `email, firstName, lastName`
 | GET      | api/users/{user_id} | show |  Fetch an user by id
 | PUT      | api/users/{user_id} | update | Update an user by id
 | DELETE   | api/users/{user_id} | destroy | Delete an user by id
 | GET      | api/notes | index | Get all notes
-| POST     | api/notes | store | Create a note. Available fields: message, tags
+| POST     | api/notes | store | Create a note. Available fields: `message, tags`
 | GET      | api/notes/{note_id} | show |  Fetch a note by id
 | PUT      | api/notes/{note_id} | update | Update a note by id
 | DELETE   | api/notes/{note_id} | destroy | Delete a note by id
