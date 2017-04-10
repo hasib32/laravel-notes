@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Helpers\ApiVersionHelper;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -65,6 +66,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
+        //set version to namespace
+        $this->namespace = $this->namespace . '\\' . ucfirst(ApiVersionHelper::getVersion());
+
         Route::prefix('api')
              ->middleware('api')
              ->namespace($this->namespace)

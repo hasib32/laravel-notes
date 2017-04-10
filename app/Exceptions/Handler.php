@@ -5,6 +5,9 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Auth\Access\AuthorizationException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -44,6 +47,17 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof AuthorizationException) {
+            return response()->json((['status' => 403, 'message' => 'Insufficient privileges to perform this action']), 403);
+        }
+
+        if ($exception instanceof MethodNotAllowedHttpException) {
+            return response()->json((['status' => 405, 'message' => 'Method Not Allowed']), 405);
+        }
+
+        if ($exception instanceof NotFoundHttpException) {
+            return response()->json((['status' => 404, 'message' => 'The requested resource was not found']), 404);
+        }
         return parent::render($request, $exception);
     }
 
@@ -56,10 +70,6 @@ class Handler extends ExceptionHandler
      */
     protected function unauthenticated($request, AuthenticationException $exception)
     {
-        if ($request->expectsJson()) {
-            return response()->json(['error' => 'Unauthenticated.'], 401);
-        }
-
-        return redirect()->guest(route('login'));
+        return response()->json((['status' => 401, 'message' => 'Unauthorized Access']), 401);
     }
 }
