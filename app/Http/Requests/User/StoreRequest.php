@@ -26,7 +26,7 @@ class StoreRequest extends Request
             'city'                  => 'max:100',
             'state'                 => 'max:100',
             'country'               => 'max:100',
-            'password'              => 'min:5'
+            'password'              => 'required|min:5'
         ];
     }
 }
