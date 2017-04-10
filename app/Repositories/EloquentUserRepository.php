@@ -26,7 +26,9 @@ class EloquentUserRepository extends AbstractEloquentRepository implements UserR
             $data['password'] = Hash::make($data['password']);
         }
 
-        return parent::save($data);
+        $user = parent::save($data);
+        
+        return $this->model->find($user->id);
     }
 
     /**
