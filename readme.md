@@ -49,7 +49,13 @@ $ php artisan passport:install
 You can find those clients in "oauth_clients" table.
 
 ## Testing API with [Postman.](https://www.getpostman.com/)
-In order to use the API first we need to create a access_token. For testing purpose we can use Postman for creating access_token. Then, we can use that access_token to make API call. Here are the avilable API resources:
+In order to use the API we need to create a access_token. Make a POST request to `oauth/token` endpoint. Requied fields are: ` grant_type, client_id, client_secret, username, password`. Don't get confuse with the `username` fields. You have to use users table email column value as username and you can use `secret` as password. For testing purpose we can use Postman for creating access_token. Here is a screenshot for creating access_token using Postman
+
+
+![access_token creation](/public/images/notes-app-access-token.png?raw=true "access_token creation example")
+
+
+We can use the newly created access_token to make API call. Here are the avilable API resources:
 
 | HTTP Method	| Path | Action | Desciption  |
 | ----- | ----- | ----- | ------------- |
