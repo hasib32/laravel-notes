@@ -35,7 +35,9 @@ class EloquentNoteRepository extends AbstractEloquentRepository implements NoteR
      */
     public function save(array $data)
     {
-        $data['userId'] = $this->loggedInUser->id;
+        if (!isset($data['userId'])) {
+            $data['userId'] = $this->loggedInUser->id;
+        }
 
         return parent::save($data);
     }

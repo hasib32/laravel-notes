@@ -15,7 +15,8 @@ class StoreRequest extends Request
     {
         return [
             'message'   => 'required',
-            'tags'      => ''
+            'tags'      => '',
+            'userId'    => 'exists:users,id'
         ];
     }
 }

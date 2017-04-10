@@ -53,7 +53,7 @@ class NoteController extends Controller
             return $this->sendCustomResponse(404, 'Error occurred on creating Note');
         }
 
-        return $this->sendSuccessResponse($note, 200);
+        return $this->sendSuccessResponse($note, 201);
     }
 
     /**
