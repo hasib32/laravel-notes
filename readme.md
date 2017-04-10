@@ -60,7 +60,7 @@ We can use the newly created access_token to make API call. Here are the avilabl
 | HTTP Method	| Path | Action | Desciption  |
 | ----- | ----- | ----- | ------------- |
 | GET      | api/users | index | Get all users
-| POST     | api/user | store | Create an user. Required fields: `email, firstName, lastName`
+| POST     | api/user | store | Create an user. Required fields: `email, firstName, lastName, password`
 | GET      | api/users/{user_id} | show |  Fetch an user by id
 | PUT      | api/users/{user_id} | update | Update an user by id
 | DELETE   | api/users/{user_id} | destroy | Delete an user by id
@@ -69,3 +69,9 @@ We can use the newly created access_token to make API call. Here are the avilabl
 | GET      | api/notes/{note_id} | show |  Fetch a note by id
 | PUT      | api/notes/{note_id} | update | Update a note by id
 | DELETE   | api/notes/{note_id} | destroy | Delete a note by id
+
+## Running phpunit tests
+Run this command from the projcet root directory.
+```bash
+$ vendor/bin/phpunit
+```
