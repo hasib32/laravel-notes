@@ -70,6 +70,14 @@ We can use the newly created access_token to make API call. Here are the avilabl
 | PUT      | api/notes/{note_id} | update | Update a note by id
 | DELETE   | api/notes/{note_id} | destroy | Delete a note by id
 
+## Headers
+Make sure you include these headers when make api call.
+
+```
+Authorization: Bearer {access_token}
+Accept: application/vnd.notes.app+json;version=1
+```
+
 ## Running phpunit tests
 Run this command from the projcet root directory.
 ```bash
