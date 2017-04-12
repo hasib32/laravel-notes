@@ -12,11 +12,10 @@ class UserPolicy
     /**
      * Policy Filter
      *
-     * @param $user
-     * @param $ability
+     * @param User $user
      * @return bool
      */
-    public function before($user, $ability)
+    public function before($user)
     {
         if ($user->isAdmin()) {
             return true;

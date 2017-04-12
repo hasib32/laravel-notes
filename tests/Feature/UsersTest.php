@@ -66,7 +66,8 @@ class UsersTest extends TestCase
         $response = $this->call('POST', 'api/users', [
             'email'     => 'test@test.com',
             'firstName' => 'first',
-            'lastName'  => 'last'
+            'lastName'  => 'last',
+            'password'  => bcrypt('secret')
         ]);
         $response
             ->assertStatus(201)
@@ -80,7 +81,8 @@ class UsersTest extends TestCase
         $response = $this->call('POST', 'api/users', [
             'email'     => 'test@test.com',
             'firstName' => 'first2',
-            'lastName'  => 'last2'
+            'lastName'  => 'last2',
+            'password'  => bcrypt('secret')
         ]);
         $response->assertStatus(400);
     }

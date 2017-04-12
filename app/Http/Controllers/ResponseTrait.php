@@ -14,7 +14,7 @@ trait ResponseTrait
     /**
      * Getter for statusCode
      *
-     * @return mixed
+     * @return int
      */
     public function getStatusCode()
     {
@@ -38,7 +38,7 @@ trait ResponseTrait
     /**
      * Send custom data response
      *
-     * @param $status
+     * @param int $status
      * @param $message
      * @return \Illuminate\Http\JsonResponse
      */
@@ -50,10 +50,10 @@ trait ResponseTrait
     /**
      * Send this response when api user provide fields that doesn't exist in our application
      *
-     * @param $errors
-     * @return mixed
+     * @param array $errors
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function sendUnknownFieldResponse($errors)
+    public function sendUnknownFieldResponse(array $errors)
     {
         return response()->json((['status' => 400, 'unknown_fields' => $errors]), 400);
     }
@@ -61,10 +61,10 @@ trait ResponseTrait
     /**
      * Send this response when api user provide filter that doesn't exist in our application
      *
-     * @param $errors
-     * @return mixed
+     * @param array $errors
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function sendInvalidFilterResponse($errors)
+    public function sendInvalidFilterResponse(array $errors)
     {
         return response()->json((['status' => 400, 'invalid_filters' => $errors]), 400);
     }
@@ -72,10 +72,10 @@ trait ResponseTrait
     /**
      * Send this response when api user provide incorrect data type for the field
      *
-     * @param $errors
-     * @return mixed
+     * @param array $errors
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function sendInvalidFieldResponse($errors)
+    public function sendInvalidFieldResponse(array $errors)
     {
         return response()->json((['status' => 400, 'invalid_fields' => $errors]), 400);
     }
@@ -83,7 +83,7 @@ trait ResponseTrait
     /**
      * Send this response when a api user try access a resource that they don't belong
      *
-     * @return string
+     * @return \Illuminate\Http\JsonResponse
      */
     public function sendForbiddenResponse()
     {
@@ -94,7 +94,7 @@ trait ResponseTrait
      * Send 404 not found response
      *
      * @param string $message
-     * @return string
+     * @return \Illuminate\Http\JsonResponse
      */
     public function sendNotFoundResponse($message = '')
     {
@@ -108,13 +108,20 @@ trait ResponseTrait
     /**
      * Send empty data response
      *
-     * @return string
+     * @return \Illuminate\Http\JsonResponse
      */
     public function sendEmptyDataResponse()
     {
         return response()->json(['data' => new \StdClass()]);
     }
 
+    /**
+     * Send success response
+     *
+     * @param $data
+     * @param int $code
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function sendSuccessResponse($data, $code)
     {
         return response()->json(['data' => $data], $code);
